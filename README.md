@@ -11,7 +11,7 @@
 
 # DeepWave
 
-> Librería para identificar y clasificar ondas en series de tiempo utilizando Deep Learning.
+> Libreria para identificar y clasificar ondas en series de tiempo utilizando Deep Learning.
 
 
 ## Install
@@ -19,8 +19,6 @@
 `pip install deepwave`
 
 ## How to use
-
-Fill me in please! Don't forget code examples:
 <div class="codecell" markdown="1">
 <div class="input_area" markdown="1">
 
@@ -45,8 +43,18 @@ Fill me in please! Don't forget code examples:
 <div class="input_area" markdown="1">
 
 ```python
-suma(2,2)
+sum(2,2)
 ```
+
+</div>
+<div class="output_area" markdown="1">
+
+
+
+
+    4
+
+
 
 </div>
 
