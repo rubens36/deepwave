@@ -2,6 +2,7 @@
 .gitattributes
 .last_checked
 .gitconfig
+.venv
 *.bak
 *.log
 *~
