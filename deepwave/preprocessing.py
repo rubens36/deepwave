@@ -4,5 +4,5 @@ __all__ = ['sum']
 
 #Cell
 def sum(a,b):
-    "Suma dos números"
+    "Suma dos numeros"
     return a + b
