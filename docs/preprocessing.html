@@ -21,6 +21,12 @@ summary: "Este modulo es el encargado de la carga, preprocesamiento y preparacio
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Clase-TimeSerie">Clase TimeSerie<a class="anchor-link" href="#Clase-TimeSerie">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
@@ -33,10 +39,54 @@ summary: "Este modulo es el encargado de la carga, preprocesamiento y preparacio
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sum" class="doc_header"><code>sum</code><a href="https://github.com/rubens36/deepwave/tree/master/deepwave/preprocessing.py#L6" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sum</code>(<strong><code>a</code></strong>, <strong><code>b</code></strong>)</p>
+<h2 id="TimeSerie" class="doc_header"><code>class</code> <code>TimeSerie</code><a href="https://github.com/rubens36/deepwave/tree/master/deepwave/preprocessing.py#L6" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TimeSerie</code>(<strong><code>window_size</code></strong>:<code>str</code>=<em><code>'2m'</code></em>, <strong><code>step</code></strong>:<code>str</code>=<em><code>'30s'</code></em>, <strong><code>freq</code></strong>:<code>int</code>=<em><code>50</code></em>)</p>
 </blockquote>
-<p>Suma dos numeros</p>
+<p>Estructura de datos que almacena las mediciones en una estacion.</p>
 
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ejemplos:">Ejemplos:<a class="anchor-link" href="#Ejemplos:">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Serie de tiempo con ventana de 2 minutos y paso de 30 segundos, el muestreo fue hecho a 50 Hz.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30s&quot;</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>window_size 120
+step 30
+freq 50</pre>
 </div>
 
 </div>
@@ -50,10 +100,206 @@ summary: "Este modulo es el encargado de la carga, preprocesamiento y preparacio
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">==</span><span class="mi">7</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;4s&quot;</span><span class="p">,</span><span class="s2">&quot;2s&quot;</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>window_size 4
+step 2
+freq 40</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;1h&quot;</span><span class="p">,</span><span class="s2">&quot;30m&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>window_size 3600
+step 1800
+freq 10</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>window_size 10
+step 5
+freq 15</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30&quot;</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>window_size 120
+step 30
+freq 30</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tests">Tests<a class="anchor-link" href="#Tests">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Test definition</span>
+
+<span class="k">class</span> <span class="nc">TestTimeSerie</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__check_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">freq</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">test_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30s&quot;</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;4s&quot;</span><span class="p">,</span><span class="s2">&quot;2s&quot;</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+        
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;1h&quot;</span><span class="p">,</span><span class="s2">&quot;30m&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30&quot;</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Test run</span>
+<span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">],</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>test_params (__main__.TestTimeSerie) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;unittest.main.TestProgram at 0x181d4c6aac8&gt;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
