@@ -2,7 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"TimeSerie": "00_preprocessing.ipynb"}
+index = {"TimeSerie": "00_preprocessing.ipynb",
+         "TestTimeSerie": "00_preprocessing.ipynb"}
 
 modules = ["preprocessing.py"]
 

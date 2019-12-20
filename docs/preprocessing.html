@@ -182,68 +182,25 @@ ademas de los datos correspondientes a la estacion y el canal pasados por parame
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Test definition</span>
-
-<span class="k">class</span> <span class="nc">TestTimeSerie</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    
-    <span class="k">def</span> <span class="nf">__check_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">freq</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">test_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30s&quot;</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-        
-        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;4s&quot;</span><span class="p">,</span><span class="s2">&quot;2s&quot;</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
-        
-        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;1h&quot;</span><span class="p">,</span><span class="s2">&quot;30m&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        
-        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-        
-        <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30&quot;</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_params</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">test_file_load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="o">.</span><span class="n">load_data_one_file</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/raw/2018-10-30-2100-00M.B2DF__001_00_01&quot;</span><span class="p">))</span>
-        <span class="n">res</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv&quot;</span><span class="p">)</span><span class="o">/</span><span class="s1">&#39;test_load_file1.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        
-        <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv/test_load_file1.csv&quot;</span><span class="p">))</span>
-        <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv/test_load_file.csv&quot;</span><span class="p">))</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_frame_equal</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">test_list_load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
-                    <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/raw/2018-10-30-2100-00M.B2DF__001_00_01&quot;</span><span class="p">),</span>
-                    <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/raw/2018-10-30-2200-00M.B2DF__001_00_01&quot;</span><span class="p">),</span>
-                    <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/raw/2018-10-30-2300-00M.B2DF__001_00_01&quot;</span><span class="p">),</span>
-                <span class="p">]</span>
-        
-        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">TimeSerie</span><span class="o">.</span><span class="n">load_data_list</span><span class="p">(</span><span class="n">files</span><span class="p">))</span> \
-            <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv&quot;</span><span class="p">)</span><span class="o">/</span><span class="s1">&#39;test_load_list1.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        
-        <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv/test_load_list1.csv&quot;</span><span class="p">))</span>
-        <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv/test_load_list.csv&quot;</span><span class="p">))</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_frame_equal</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">test_folder_load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">TimeSerie</span><span class="o">.</span><span class="n">load_data_folder</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/raw&quot;</span><span class="p">)))</span> \
-            <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv&quot;</span><span class="p">)</span><span class="o">/</span><span class="s1">&#39;test_load_folder1.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        
-        <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv/test_load_folder1.csv&quot;</span><span class="p">))</span>
-        <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/test/csv/test_load_folder.csv&quot;</span><span class="p">))</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_frame_equal</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
-</pre></div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="TestTimeSerie" class="doc_header"><code>class</code> <code>TestTimeSerie</code><a href="https://github.com/rubens36/deepwave/tree/master/deepwave/preprocessing.py#L79" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TestTimeSerie</code>(<strong><code>methodName</code></strong>=<em><code>'runTest'</code></em>) :: <code>TestCase</code></p>
+</blockquote>
+<p>Se utiliza para testear la clase TimeSerie.</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
 
