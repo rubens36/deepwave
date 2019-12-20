@@ -32,6 +32,42 @@ class TimeSerie:
         assert freq > 0 and freq <= 500, "La frecuencia debe definirse entre 1 y 500 Hz"
         self.freq = freq
 
+    @staticmethod
+    def load_data_one_file(file_path, station="B2DF", channel="001"):
+        """
+        Busca en el camino del archivo pasado por parametros y
+        retorna un diccionario con la fecha de inicio y termino,
+        ademas de los datos correspondientes a la estacion y el canal pasados por parametros.
+        """
+        st = read(str(file_path))
+        for tr in st:
+            if tr.stats.station == station and tr.stats.channel == channel:
+                return {"start": tr.stats.starttime, "end": tr.stats.endtime, "data": tr.data}
+
+    @staticmethod
+    def load_data_list(list_file_path, station="B2DF", channel="001"):
+        """
+        Busca en cada camino de archivo de la lista pasado por parametros y
+        retorna una lista de diccionarios con las fecha de inicio y termino,
+        ademas de los datos correspondientes a la estacion y el canal pasados por parametros.
+        """
+        data = [
+                 TimeSerie.load_data_one_file(file_path, station, channel) \
+                 for file_path in list_file_path \
+                 if not file_path.is_dir()
+               ]
+        return data
+
+    @staticmethod
+    def load_data_folder(folder_path, station="B2DF", channel="001"):
+        """
+        Busca en cada archivo miniseed del directorio pasado por parametros y
+        retorna una lista de diccionarios con las fecha de inicio y termino,
+        ademas de los datos correspondientes a la estacion y el canal pasados por parametros.
+        """
+        data = TimeSerie.load_data_list(folder_path.glob("**/*"), station, channel)
+        return data
+
     def __repr__(self):
         return f"window_size {self.window_size}\nstep {self.step}\nfreq {self.freq}"
 
