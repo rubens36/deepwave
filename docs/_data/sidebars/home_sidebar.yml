@@ -12,6 +12,12 @@ entries:
     - output: web,pdf
       title: Preprocessing
       url: /preprocessing
+    - output: web,pdf
+      title: Trainning
+      url: /training
+    - output: web,pdf
+      title: Classification
+      url: /classification
     output: web
     title: deepwave
   output: web

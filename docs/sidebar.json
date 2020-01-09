@@ -1,6 +1,8 @@
 {
   "deepwave": {
     "Overview": "/",
-    "Preprocessing": "/preprocessing"
+    "Preprocessing": "/preprocessing",
+    "Trainning": "/training",
+    "Classification": "/classification"
   }
 }
