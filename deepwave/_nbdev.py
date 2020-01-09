@@ -16,8 +16,7 @@ index = {"check_files": "00_preprocessing.ipynb",
          "get_window_range": "00_preprocessing.ipynb",
          "plot_window": "00_preprocessing.ipynb",
          "plot_all_windows": "00_preprocessing.ipynb",
-         "TimeSerie": "00_preprocessing.ipynb",
-         "TestTimeSerie": "00_preprocessing.ipynb"}
+         "TimeSerie": "00_preprocessing.ipynb"}
 
 modules = ["preprocessing.py"]
 

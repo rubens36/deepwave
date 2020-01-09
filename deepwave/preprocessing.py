@@ -2,7 +2,7 @@
 
 __all__ = ['check_files', 'Labels', 'get_freq_from_file', 'change_data_frequency', 'split_data', 'load_data_one_file',
            'load_data_list', 'load_data_folder', 'plot_data', '__binary_search', 'binary_search', 'get_window_range',
-           'plot_window', 'plot_all_windows', 'TimeSerie', 'TestTimeSerie']
+           'plot_window', 'plot_all_windows', 'TimeSerie']
 
 # Cell
 def check_files(folder_path, station="B2DF", channel="001"):
@@ -320,65 +320,3 @@ class TimeSerie:
 
     def __str__(self):
         return f"window_size {self.window_size}\nstep {self.step}\nfreq {self.freq}"
-
-# Cell
-
-import unittest
-class TestTimeSerie(unittest.TestCase):
-    """
-    Se utiliza para testear la clase TimeSerie.
-    """
-
-    def __check_params(self, ts, window_size, step):
-        self.assertEqual(ts.window_size, window_size)
-        self.assertEqual(ts.step, step)
-
-    def test_params(self):
-        data_path = Path("./data/B2DF/raw")
-        ts = TimeSerie(data_path, "2m","30s")
-        self.__check_params(ts, 120, 30)
-
-        ts = TimeSerie(data_path, "4s","2s")
-        self.__check_params(ts, 4, 2)
-
-        ts = TimeSerie(data_path, "1h","30m")
-        self.__check_params(ts, 60*60, 30*60)
-
-        ts = TimeSerie(data_path, "10","5")
-        self.__check_params(ts, 10, 5)
-
-        ts = TimeSerie(data_path, "2m","30")
-        self.__check_params(ts, 2*60, 30)
-
-    """
-    def test_file_load(self):
-        res = TimeSerie.load_data_one_file(Path("./data/B2DF/raw/2018-10-30-2100-00M.B2DF__001_00_01"))
-        res["data"] = res["data"][:10]
-        pd.DataFrame(res).to_csv(Path("./data/B2DF/test/csv")/'test_load_file1.csv', index=False)
-
-        df1 = pd.read_csv(Path("./data/B2DF/test/csv/test_load_file1.csv"))
-        df2 = pd.read_csv(Path("./data/B2DF/test/csv/test_load_file.csv"))
-        pd.util.testing.assert_frame_equal(df1, df2)
-
-    def test_list_load(self):
-        files = [
-                    Path("./data/B2DF/raw/2018-10-30-2100-00M.B2DF__001_00_01"),
-                    Path("./data/B2DF/raw/2018-10-30-2200-00M.B2DF__001_00_01"),
-                    Path("./data/B2DF/raw/2018-10-30-2300-00M.B2DF__001_00_01"),
-                ]
-
-        pd.DataFrame(TimeSerie.load_data_list(files)) \
-            .to_csv(Path("./data/B2DF/test/csv")/'test_load_list1.csv', index=False)
-
-        df1 = pd.read_csv(Path("./data/B2DF/test/csv/test_load_list1.csv"))
-        df2 = pd.read_csv(Path("./data/B2DF/test/csv/test_load_list.csv"))
-        pd.util.testing.assert_frame_equal(df1, df2)
-
-    def test_folder_load(self):
-        pd.DataFrame(TimeSerie.load_data_folder(Path("./data/B2DF/test/raw"))) \
-            .to_csv(Path("./data/B2DF/test/csv")/'test_load_folder1.csv', index=False)
-
-        df1 = pd.read_csv(Path("./data/B2DF/test/csv/test_load_folder1.csv"))
-        df2 = pd.read_csv(Path("./data/B2DF/test/csv/test_load_folder.csv"))
-        pd.util.testing.assert_frame_equal(df1, df2)
-    """
