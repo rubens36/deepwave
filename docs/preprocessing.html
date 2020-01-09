@@ -98,31 +98,19 @@ summary: "Este modulo es el encargado de la carga, preprocesamiento y preparacio
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">Labels</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/B2DF_labels.csv&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>labels = Labels("./data/B2DF/B2DF_labels.csv")</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSerie</span><span class="p">(</span><span class="s2">&quot;./data/B2DF/B2DF_labels.csv&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30s&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ts = TimeSerie("./data/B2DF/B2DF_labels.csv", labels, "2m","30s")</p>
 
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -516,83 +504,40 @@ ademas de los datos correspondientes a la estacion y el canal pasados por parame
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TIMESERIE_PATH</span> <span class="o">=</span> <span class="s2">&quot;./data/B2DF/raw&quot;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TIMESERIE_PATH = "./data/B2DF/raw"</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="n">TIMESERIE_PATH</span><span class="p">,</span> <span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30s&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TimeSerie(TIMESERIE_PATH, "2m","30s")</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="n">TIMESERIE_PATH</span><span class="p">,</span> <span class="s2">&quot;4s&quot;</span><span class="p">,</span><span class="s2">&quot;2s&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TimeSerie(TIMESERIE_PATH, "4s","2s")</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="n">TIMESERIE_PATH</span><span class="p">,</span> <span class="s2">&quot;1h&quot;</span><span class="p">,</span><span class="s2">&quot;30m&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TimeSerie(TIMESERIE_PATH, "1h","30m")</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="n">TIMESERIE_PATH</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TimeSerie(TIMESERIE_PATH, "10","5")</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TimeSerie</span><span class="p">(</span><span class="n">TIMESERIE_PATH</span><span class="p">,</span> <span class="s2">&quot;2m&quot;</span><span class="p">,</span><span class="s2">&quot;30&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -617,6 +562,13 @@ ademas de los datos correspondientes a la estacion y el canal pasados por parame
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TimeSerie(TIMESERIE_PATH, "2m","30")</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
